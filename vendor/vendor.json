@@ -3,10 +3,6 @@
 	"ignore": "test",
 	"package": [
 		{
-			"path": "appengine/cloudsql",
-			"revision": ""
-		},
-		{
 			"checksumSHA1": "lQhJi24AQh1YC8QQuHi1yKwwhQE=",
 			"path": "github.com/afex/hystrix-go",
 			"revision": "27fae8d30f1a3cbcab6618d2ee55a4cb43064376",
@@ -49,10 +45,10 @@
 			"revisionTime": "2017-03-27T19:17:03Z"
 		},
 		{
-			"checksumSHA1": "tDaSOb/ksSCS00Ni/Wx6778yk3g=",
+			"checksumSHA1": "zFv0xWYC94gU6aClN7LlZF5EaAs=",
 			"path": "github.com/go-sql-driver/mysql",
-			"revision": "02eb68a684ce8ccb467a8280c5b51232d44643b9",
-			"revisionTime": "2018-03-03T16:06:37Z"
+			"revision": "1a676ac6e4dce68e9303a1800773861350374a9e",
+			"revisionTime": "2018-03-08T10:03:10Z"
 		},
 		{
 			"checksumSHA1": "sZBC82LlCP+qEu9/4rzKzgfEdIc=",
@@ -267,26 +263,26 @@
 		{
 			"checksumSHA1": "L68uqaYKEOxkq2xwnNV2bRP7yO4=",
 			"path": "golang.org/x/net/html",
-			"revision": "d25186b37f34ebdbbea8f488ef055638dfab272d",
-			"revisionTime": "2018-03-05T23:57:53Z"
+			"revision": "d0aafc73d5cdc42264b0af071c261abac580695e",
+			"revisionTime": "2018-03-04T10:38:26Z"
 		},
 		{
 			"checksumSHA1": "NvlH++AI8+25Z2Vs8WKxLVCNrxo=",
 			"path": "golang.org/x/net/html/atom",
-			"revision": "d25186b37f34ebdbbea8f488ef055638dfab272d",
-			"revisionTime": "2018-03-05T23:57:53Z"
+			"revision": "d0aafc73d5cdc42264b0af071c261abac580695e",
+			"revisionTime": "2018-03-04T10:38:26Z"
 		},
 		{
 			"checksumSHA1": "barUU39reQ7LdgYLA323hQ/UGy4=",
 			"path": "golang.org/x/net/html/charset",
-			"revision": "d25186b37f34ebdbbea8f488ef055638dfab272d",
-			"revisionTime": "2018-03-05T23:57:53Z"
+			"revision": "d0aafc73d5cdc42264b0af071c261abac580695e",
+			"revisionTime": "2018-03-04T10:38:26Z"
 		},
 		{
-			"checksumSHA1": "hYsuWh8Zj6z+8rFsK7F7mABIR44=",
+			"checksumSHA1": "7WFtZ0yw6HvM2LVY1MGAEyQmQb8=",
 			"path": "golang.org/x/sys/unix",
-			"revision": "dd2ff4accc098aceecb86b36eaa7829b2a17b1c9",
-			"revisionTime": "2018-03-01T08:23:35Z"
+			"revision": "7dca6fe1f43775aa6d1334576870ff63f978f539",
+			"revisionTime": "2018-03-08T12:25:47Z"
 		},
 		{
 			"checksumSHA1": "Mr4ur60bgQJnQFfJY0dGtwWwMPE=",
@@ -480,10 +476,6 @@
 			"revision": "7f97868eec74b32b0982dd158a51a446d1da7eb5",
 			"revisionTime": "2018-02-23T19:12:37Z"
 		},
-		{
-			"path": "test/utils",
-			"revision": ""
-		}
 	],
 	"rootPath": "github.com/sanksons/reflorest"
 }
