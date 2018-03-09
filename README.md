@@ -9,7 +9,9 @@ Despite of exposing a beautiful workflow based approach for writing REST API's, 
 more user friendly. 
 
 ### Florest limitations fixed in Reflorest
-
+- All Platform Support. Supports Windows, Mac and Linux.
+- New generation Dependency Management using Vendor folder.
+- No relative package referencing.
 
 ### Intallation Instructions:
 
