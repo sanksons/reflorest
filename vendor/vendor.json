@@ -483,6 +483,10 @@
 			"path": "gopkg.in/yaml.v2",
 			"revision": "7f97868eec74b32b0982dd158a51a446d1da7eb5",
 			"revisionTime": "2018-02-23T19:12:37Z"
+		},
+		{
+			"path": "test/utils",
+			"revision": ""
 		}
 	],
 	"rootPath": "github.com/sanksons/reflorest"
