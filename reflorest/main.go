@@ -5,6 +5,8 @@ import (
 	"os"
 )
 
+const VERSION = "1.0.0"
+
 const greenColor = "\x1b[32m => "
 const redColor = "\x1b[91m ** "
 const defaultStyle = "\x1b[0m"
@@ -37,6 +39,7 @@ func init() {
 	DefaultCommand = BuildHelpCommand()
 	Commands = append(Commands, BuildBootstrapCommand())
 	Commands = append(Commands, BuildDeployCommand())
+	Commands = append(Commands, BuildHelpCommand())
 }
 
 func main() {
@@ -69,13 +72,4 @@ func main() {
 	}
 
 	DefaultCommand.Run(args, additionalArgs)
-}
-
-func commandMatching(name string) (*Command, bool) {
-	for _, command := range Commands {
-		if command.Matches(name) {
-			return command, true
-		}
-	}
-	return nil, false
 }

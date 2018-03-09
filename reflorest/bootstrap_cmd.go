@@ -6,9 +6,12 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"strings"
 )
 
 const bootstrapDataSource = "https://raw.githubusercontent.com/sanksons/reflorest/master/reflorest/_newApp"
+
+var ApplicationPath string
 
 func BuildBootstrapCommand() *Command {
 
@@ -16,13 +19,13 @@ func BuildBootstrapCommand() *Command {
 	return &Command{
 		Name:         "bootstrap",
 		FlagSet:      flagSet,
-		UsageCommand: "reflorest bootstrap",
+		UsageCommand: "reflorest bootstrap <Application PATH>",
 		Usage: []string{
 			"Bootstrap a new Application",
 		},
 		Command: func(args []string, additionalArgs []string) {
 			fmt.Printf("%s Bootstrapping New Application.%s\n", greenColor, defaultStyle)
-			err := generateBootstrap()
+			err := generateBootstrap(args)
 			if err != nil {
 				fmt.Printf("%s Error Occurred: %s. %s\n", redColor, err.Error(), defaultStyle)
 				return
@@ -32,7 +35,11 @@ func BuildBootstrapCommand() *Command {
 	}
 }
 
-func generateBootstrap() error {
+func generateBootstrap(args []string) error {
+	if len(args) == 0 {
+		return fmt.Errorf("You need to supply application path.")
+	}
+	ApplicationPath = args[0]
 	return createDirStructure()
 }
 
@@ -226,6 +233,8 @@ func (this *File) Create() error {
 
 		return this.error(err)
 	}
+	//{{APP_PATH}}
+	data = []byte(strings.Replace(string(data), "{{APP_PATH}}", ApplicationPath, -1))
 	_, err = destFile.Write(data)
 	if err != nil {
 		return this.error(err)
