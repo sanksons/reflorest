@@ -191,7 +191,7 @@ func (this *File) Fetch() ([]byte, error) {
 			err = fmt.Errorf("Got HTTP Status code: %d", resp.StatusCode)
 			continue
 		}
-		b := make([]byte, 10)
+		b := make([]byte, 0)
 		buf := bytes.NewBuffer(b)
 		_, err := buf.ReadFrom(resp.Body)
 		if err != nil {
