@@ -2,6 +2,10 @@ package service
 
 import (
 	"fmt"
+	"log"
+	"net/http"
+	"strings"
+
 	"github.com/sanksons/reflorest/src/common/config"
 	"github.com/sanksons/reflorest/src/common/constants"
 	"github.com/sanksons/reflorest/src/common/logger"
@@ -9,9 +13,6 @@ import (
 	utilhttp "github.com/sanksons/reflorest/src/common/utils/http"
 	workflow "github.com/sanksons/reflorest/src/core/common/orchestrator"
 	"github.com/sanksons/reflorest/src/core/common/versionmanager"
-	"log"
-	"net/http"
-	"strings"
 )
 
 type Webserver struct {
@@ -57,6 +58,7 @@ func (ws Webserver) Start() {
 	initMgr := new(InitManager)
 	initMgr.Execute()
 
+	log.Println("Web server Initialization done")
 	logger.Info(fmt.Sprintln("Web server Initialization done"))
 
 	//All requests will be passed to the service handler
@@ -79,6 +81,7 @@ func (ws Webserver) Start() {
 
 	//Start the web server
 	url := ":" + config.GlobalAppConfig.ServerPort
+
 	logger.Info(fmt.Sprintln("Web server Starting......"))
 
 	serr := http.ListenAndServe(url, nil)
@@ -86,6 +89,7 @@ func (ws Webserver) Start() {
 		logger.Error(fmt.Sprintln("Could not start web server ", serr))
 	}
 	if serr == nil {
+		log.Printf("Web server Started on port %v\n", config.GlobalAppConfig.ServerPort)
 		logger.Info(fmt.Sprintln("Web server Started on port : ", config.GlobalAppConfig.ServerPort))
 	}
 

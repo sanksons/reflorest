@@ -1,6 +1,8 @@
 package config
 
 import (
+	"encoding/json"
+
 	"github.com/sanksons/reflorest/src/common/monitor"
 	"github.com/sanksons/reflorest/src/common/ratelimiter"
 	"github.com/sanksons/reflorest/src/common/utils/http"
@@ -20,6 +22,14 @@ type AppConfig struct {
 	ResponseHeaders      ResponseHeaderFields
 	ApplicationConfig    interface{}
 	AppRateLimiterConfig *ratelimiter.Config
+}
+
+func (this *AppConfig) String() string {
+	str, err := json.Marshal(this)
+	if err != nil {
+		return "Could NOT Marshal APP config."
+	}
+	return string(str)
 }
 
 // PerformanceConfigs contains Garbage Collector detials, which will determine when the GC will kick

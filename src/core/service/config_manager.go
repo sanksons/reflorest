@@ -19,15 +19,14 @@ type ConfigManager struct {
 }
 
 func (cm *ConfigManager) InitializeGlobalConfig(confFile string) {
-	log.Println("\nInitializing Config ")
+
 	cm.Initialize(confFile, config.GlobalAppConfig)
-	log.Printf("\nGlobal Config=%+v", config.GlobalAppConfig)
-	log.Printf("\nApplication Config=%+v", config.GlobalAppConfig.ApplicationConfig)
+	log.Printf("Global Config is listed below: \n%+v", config.GlobalAppConfig)
+	log.Printf("Application Config is listed below: \n%+v", config.GlobalAppConfig.ApplicationConfig)
 }
 
 func (cm *ConfigManager) Initialize(filePath string, conf interface{}) {
-
-	fmt.Println(fmt.Sprintf("config %+v", conf))
+	log.Println("Initializing Application Config")
 	file, err := ioutil.ReadFile(filePath)
 	if err != nil {
 		panic(fmt.Sprintf("Error loading App Config file %s \n %s", filePath, err))
@@ -36,7 +35,7 @@ func (cm *ConfigManager) Initialize(filePath string, conf interface{}) {
 	if err != nil {
 		panic(fmt.Sprintf("Incorrect Json in %s \n %s", filePath, err))
 	}
-	log.Println("Application Config Created")
+	log.Println("Application Config Initialized")
 }
 
 // UpdateConfigFromEnv updates provided config from environment variables
@@ -47,11 +46,13 @@ func (cm *ConfigManager) UpdateConfigFromEnv(conf interface{}, ty string) {
 	localConfigMap := make(map[string]string)
 	if ty == "global" {
 		if globalEnvUpdateMap == nil {
+			log.Println("Global Environment variables Not Found")
 			return
 		}
 		localConfigMap = globalEnvUpdateMap
 	} else {
 		if configEnvUpdateMap == nil {
+			log.Println("Application Environment variables Not Found")
 			return
 		}
 		localConfigMap = configEnvUpdateMap
