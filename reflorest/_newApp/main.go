@@ -1,11 +1,11 @@
 package main
 
 import (
-	"common/appconfig"
-	"common/appconstant"
+	"{{APP_PATH}}/src/common/appconfig"
+	"{{APP_PATH}}/src/common/appconstant"
 	"fmt"
 	"github.com/sanksons/reflorest/src/core/service"
-	"hello"
+	"{{APP_PATH}}/src/hello"
 )
 
 //main is the entry point of the florest web service

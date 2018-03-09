@@ -1,7 +1,7 @@
 package hello
 
 import (
-	errors "common/appconstant"
+	errors "{{APP_PATH}}/src/common/appconstant"
 
 	florest_constants "github.com/sanksons/reflorest/src/common/constants"
 	workflow "github.com/sanksons/reflorest/src/core/common/orchestrator"
