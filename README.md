@@ -33,7 +33,7 @@ $ cd  $GOPATH/github.com/<user>/<your-application>
 ```
 **5.** Once, inside the folder, run following command:
 ```
-$ reflorest bootstrap
+$ reflorest bootstrap github.com/```user```/```your-application```
 ```
 >This will create the default directory structure for your application.
 
