@@ -39,6 +39,7 @@ $ reflorest bootstrap github.com/<user>/<your-application>
 
 **6.** Now execute:
 ```
+$ govendor init
 $ govendor fetch +o
 ```
 > This will install all the required dependencies.
