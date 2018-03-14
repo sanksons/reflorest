@@ -55,4 +55,31 @@ $ reflorest deploy
 ```
 This will install the binary to $GOBIN. 
 
+### Debugging
+
+This illustrates how you can use delve debugger to debug incoming requests to your application server.
+
+1. Install delve debugger:
+```
+$ go get -u github.com/derekparker/delve/cmd/dlv
+```
+2. Move inside your project folder and run:
+```
+$ dlv debug
+```
+3. Run following commands to setup important breakpoints. 
+```
+dlv> break reflorest/src/core/service.(*Webserver).ServiceHandler
+dlv> break reflorest/src/core/common/orchestrator.run
+dlv> break reflorest/src/core/common/orchestrator.execExecuteNode
+dlv> break reflorest/src/core/common/orchestrator.execDecisionNode
+```
+4. Now run ```continue``` command, this will boot up the server.
+
+5. Once the server is up and running simply hit your application url:
+```
+curl http://localhost:8080/restful/v1/hello
+``` 
+
+
 
