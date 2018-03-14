@@ -2,9 +2,10 @@ package logger
 
 import (
 	"fmt"
+	"time"
+
 	"github.com/sanksons/reflorest/src/common/logger/message"
 	utilHttp "github.com/sanksons/reflorest/src/common/utils/http"
-	"time"
 )
 
 //DebugSpecific logs a debug to a specific log handle
@@ -27,6 +28,9 @@ func DebugSpecific(logType string, a ...interface{}) {
 //Debug logs debug to a default log handle
 func Debug(a ...interface{}) {
 	DebugSpecific(GetDefaultLoggerType(), a...)
+	if Write2Console() {
+		DebugSpecific(ConsoleLoggerKey, a...)
+	}
 }
 
 //InfoSpecific logs a info to a specific log handle
@@ -48,6 +52,9 @@ func InfoSpecific(logType string, a ...interface{}) {
 //Info logs info to a default log handle
 func Info(a ...interface{}) {
 	InfoSpecific(GetDefaultLoggerType(), a...)
+	if Write2Console() {
+		InfoSpecific(ConsoleLoggerKey, a...)
+	}
 }
 
 //TraceSpecific logs a trace to a specific log handle
@@ -70,6 +77,9 @@ func TraceSpecific(logType string, a ...interface{}) {
 //Trace logs Trace to default log handle
 func Trace(a ...interface{}) {
 	TraceSpecific(GetDefaultLoggerType(), a...)
+	if Write2Console() {
+		TraceSpecific(ConsoleLoggerKey, a...)
+	}
 }
 
 //WarningSpecific logs a warning to a specific log handle
@@ -92,6 +102,9 @@ func WarningSpecific(logType string, a ...interface{}) {
 //Warning logs warning to default log handle
 func Warning(a ...interface{}) {
 	WarningSpecific(GetDefaultLoggerType(), a...)
+	if Write2Console() {
+		WarningSpecific(ConsoleLoggerKey, a...)
+	}
 }
 
 //ErrorSpecific logs an error to a specific logger handle
@@ -114,6 +127,9 @@ func ErrorSpecific(logType string, a ...interface{}) {
 //Error logs error to default log handle
 func Error(a ...interface{}) {
 	ErrorSpecific(GetDefaultLoggerType(), a...)
+	if Write2Console() {
+		ErrorSpecific(ConsoleLoggerKey, a...)
+	}
 }
 
 //ProfileSpecific logs a profile specifying memory and time taken by an execution
@@ -134,6 +150,9 @@ func ProfileSpecific(logType string, a ...interface{}) {
 //point to a default log handle
 func Profile(a ...interface{}) {
 	ProfileSpecific(GetDefaultLoggerType(), a...)
+	if Write2Console() {
+		ProfileSpecific(ConsoleLoggerKey, a...)
+	}
 }
 
 //GetDefaultLoggerType gets the key of a default logger type

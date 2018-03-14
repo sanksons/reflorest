@@ -39,4 +39,7 @@ type Config struct {
 
 	// AysncLogger config for async logging
 	AsyncLogger impls.AsynchLoggerConfig
+
+	//Should logs be written to console too.
+	Write2Console bool `json:"Write2Console"`
 }

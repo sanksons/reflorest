@@ -11,6 +11,7 @@ import (
 	"github.com/sanksons/reflorest/src/common/logger/formatter"
 	"github.com/sanksons/reflorest/src/common/logger/impls"
 	"github.com/sanksons/reflorest/src/common/logger/writers/filewriter"
+	"github.com/sanksons/reflorest/src/common/logger/writers/stdoutwriter"
 )
 
 //Type of log implementations
@@ -24,6 +25,8 @@ const (
 	//logrotation can be handled by external program like logrotate(8)
 	//Sample logrotate config file is placed under logger config directory
 	Filelog string = "file"
+
+	ConsoleLoggerKey string = "console"
 )
 
 //loggerImpls stores various logger handles mapped by key
@@ -49,6 +52,16 @@ func Initialise(confFile string) error {
 		return err
 	}
 	loggerImpls = make(map[string]LogInterface)
+
+	// check and set formatter
+	if format, err = formatter.GetFormatter("string"); err != nil {
+		return err
+	}
+	//Set Console logger
+	stdoutw := stdoutwriter.GetNewObj().SetFormatter(format)
+
+	loggerImpls[ConsoleLoggerKey] = stdoutw
+
 	return initLoggers()
 }
 
@@ -126,4 +139,9 @@ func initLoggers() error {
 //CanLog returns true if the argument logeLevel is smaller than config logLevel
 func CanLog(logLevel int) bool {
 	return conf != nil && conf.LogLevel >= logLevel
+}
+
+//Check if we need to write to console too.
+func Write2Console() bool {
+	return conf.Write2Console
 }
