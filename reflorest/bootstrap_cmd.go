@@ -255,11 +255,11 @@ func createDirStructure() error {
 		},
 		Folders: []Folder{
 			Folder{
-				Name:       "config",
-				ActualName: "config",
-				Folders: []Folder{
-					Folder{Name: "logger", ActualName: "logger", Files: []File{File{Name: "logger", ActualName: "logger", Extension: "json"}}},
-					Folder{Name: "newApp", ActualName: "newApp", Files: []File{File{Name: "conf", ActualName: "conf", Extension: "json"}}},
+				Name:       "conf",
+				ActualName: "conf",
+				Files: []File{
+					File{Name: "conf", ActualName: "conf", Extension: "json"},
+					File{Name: "logger", ActualName: "logger", Extension: "json"},
 				},
 			},
 			Folder{

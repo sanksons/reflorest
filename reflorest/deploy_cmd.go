@@ -77,16 +77,17 @@ func SetConfigFiles() error {
 	if err != nil {
 		return err
 	}
-	err = copyFile("config/newApp/conf.json", path2conf+DS+"conf.json")
+	//copy config files.
+	err = copyFile("conf/conf.json", path2conf+DS+"conf.json")
 	if err != nil {
 		return err
 	}
-	err = copyFile("config/logger/logger.json", path2conf+DS+"logger.json")
+	err = copyFile("conf/logger.json", path2conf+DS+"logger.json")
 	if err != nil {
 		return err
 	}
 	return nil
-	//now copy configuration files to this directory.
+
 }
 
 func copyFile(from string, to string) error {
