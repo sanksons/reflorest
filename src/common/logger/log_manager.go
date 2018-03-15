@@ -54,18 +54,22 @@ func Initialise(confFile string) error {
 	loggerImpls = make(map[string]LogInterface)
 
 	// check and set formatter
-	format, err := formatter.GetFormatter("string")
+	SetConsoleLogger()
+
+	return initLoggers()
+}
+
+func SetConsoleLogger() error {
+	format, err := formatter.GetFormatter(formatter.CONSOLE)
 	if err != nil {
 		return err
 	}
-	//Set Console logger
 	stdoutw := stdoutwriter.GetNewObj()
 	stdoutw.SetFormatter(format)
 	tmp := impls.GetSynchLogger(stdoutw)
 
 	loggerImpls[ConsoleLoggerKey] = tmp
-
-	return initLoggers()
+	return nil
 }
 
 //GetLoggerHandle returns a loggerHandle as specified by logType key
