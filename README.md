@@ -12,6 +12,8 @@ more user friendly.
 - All Platform Support. Supports Windows, Mac and Linux.
 - New generation Dependency Management using Vendor folder.
 - No relative package referencing.
+- Easy debugging with delve.
+- QueryString support.
 
 ### Intallation Instructions:
 
