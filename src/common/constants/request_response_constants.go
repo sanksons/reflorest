@@ -28,10 +28,11 @@ const (
 
 	BucketID = "BUCKETID"
 
-	Resource   = "RESOURCE"
-	Version    = "VERSION"
-	Action     = "ACTION"
-	PathParams = "PATH_PARAMS"
+	Resource    = "RESOURCE"
+	Version     = "VERSION"
+	Action      = "ACTION"
+	PathParams  = "PATH_PARAMS"
+	QueryString = "URL_QUERY_STRING"
 
 	Result = "RESULT"
 

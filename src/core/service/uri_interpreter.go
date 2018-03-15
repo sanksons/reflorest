@@ -32,20 +32,21 @@ func (u URIInterpreter) Execute(data workflow.WorkFlowData) (workflow.WorkFlowDa
 
 	logger.Info(fmt.Sprintln("Entered ", u.Name()), rc)
 
-	resource, version, action, pathParams := u.getResource(data)
+	resource, version, action, pathParams, queryString := u.getResource(data)
 	data.IOData.Set(constants.Resource, resource)
 	data.IOData.Set(constants.Version, version)
 	data.IOData.Set(constants.Action, action)
 	data.IOData.Set(constants.PathParams, pathParams)
+	data.IOData.Set(constants.QueryString, queryString)
 	data.IOData.Set(constants.ResponseMetaData, utilhttp.NewResponseMetaData())
 
-	logger.Info(fmt.Sprintln("exiting ", u.Name()), rc)
+	logger.Info(fmt.Sprintln("Exiting ", u.Name()), rc)
 	return data, nil
 }
 
 func (u URIInterpreter) getResource(data workflow.WorkFlowData) (resource string,
 	version string,
-	action string, pathParams string) {
+	action string, pathParams string, queryString map[string]string) {
 
 	rc, _ := data.ExecContext.Get(constants.RequestContext)
 	uridata, _ := data.IOData.Get(constants.URI)
@@ -56,6 +57,9 @@ func (u URIInterpreter) getResource(data workflow.WorkFlowData) (resource string
 		uri = v
 	}
 	logger.Info(fmt.Sprintln("uri is ", uri), rc)
+
+	//prepare query string data
+	queryString = u.getQueryParams(uri)
 
 	// remove query parameter if any
 	if index := strings.Index(uri, "?"); index != -1 {
@@ -87,5 +91,23 @@ func (u URIInterpreter) getResource(data workflow.WorkFlowData) (resource string
 		action = string(v)
 	}
 
-	return resource, version, action, pathParams
+	return resource, version, action, pathParams, queryString
+}
+
+func (u URIInterpreter) getQueryParams(uri string) map[string]string {
+	m := make(map[string]string)
+	if index := strings.Index(uri, "?"); index != -1 {
+		uri = uri[index+1:]
+		//split on &
+		uriArr := strings.Split(uri, "&")
+		if len(uriArr) > 0 {
+			for _, data := range uriArr {
+				dataArr := strings.Split(data, "=")
+				if len(dataArr) == 2 { //check if we have exactly two elements var=data
+					m[dataArr[0]] = dataArr[1]
+				}
+			}
+		}
+	}
+	return m
 }
