@@ -1,6 +1,6 @@
 {
     "ProfilerEnabled": true,
-    "LogLevel": 4,
+    "LogLevel": 2,
     "DefaultLogType": "fileLoggerDefault",
     "AppName" : "{{APP_NAME}}-",
     "Write2Console" : true,
