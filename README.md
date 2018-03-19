@@ -15,6 +15,11 @@ more user friendly.
 - Easy debugging with delve.
 - QueryString support.
 
+### Pending Items:
+- Use jsonitor instead of encoding/json
+- Modify Gzip handler so that it gzips only when the content size is higher than a minimum threshold.
+- Rest Friendly URL's
+
 ### Intallation Instructions:
 
 **1.** Install the Reflorest CLI, using command:
