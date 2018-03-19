@@ -86,6 +86,10 @@ func SetConfigFiles() error {
 	if err != nil {
 		return err
 	}
+	err = copyFile("conf/standard.flf", path2conf+DS+"standard.flf")
+	if err != nil {
+		return err
+	}
 	return nil
 
 }
