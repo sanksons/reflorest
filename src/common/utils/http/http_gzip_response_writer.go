@@ -7,6 +7,8 @@ import (
 	"strings"
 )
 
+const MIN_GZIP_THRESHOLD = 1024 //bytes
+
 type gzipResponseWriter struct {
 	io.Writer
 	http.ResponseWriter
@@ -22,6 +24,7 @@ func MakeGzipHandler(fn http.HandlerFunc) http.HandlerFunc {
 			fn(w, r)
 			return
 		}
+		//todo: do not gzip if response size exceeds threshold.
 		w.Header().Set("Content-Encoding", "gzip")
 		gz := gzip.NewWriter(w)
 		defer gz.Close()

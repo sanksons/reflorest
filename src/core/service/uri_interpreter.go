@@ -68,12 +68,14 @@ func (u URIInterpreter) getResource(data workflow.WorkFlowData) (resource string
 	// split on basis of separator
 	uriArr := strings.Split(uri[1:], "/")
 
+	//its an health check api if url: appname/healthckeck
 	if len(uriArr) >= 2 &&
 		uriArr[0] == config.GlobalAppConfig.AppName &&
 		strings.ToUpper(uriArr[1]) == constants.HealthCheckAPI {
 		resource = constants.HealthCheckAPI
 		version = ""
 		pathParams = ""
+		//else if url of format appname/version/resource its a normal url.
 	} else if len(uriArr) >= 3 && uriArr[0] == config.GlobalAppConfig.AppName {
 		resource = strings.ToUpper(uriArr[2])
 		version = strings.ToUpper(uriArr[1])

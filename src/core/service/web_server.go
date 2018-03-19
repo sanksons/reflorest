@@ -72,6 +72,8 @@ func (ws Webserver) Start() {
 			panic(rerr)
 		}
 
+		//@todo: Its overkill to always gzip when the respons size is very small.
+		// this should be on the user to decide.
 		httpHandlerFunc = utilhttp.MakeGzipHandler(
 			ratelimiter.MakeRateLimitedHTTPHandler(ws.wrapperHandler, rl, "SERVICE"),
 		)
