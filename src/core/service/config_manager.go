@@ -21,12 +21,12 @@ type ConfigManager struct {
 func (cm *ConfigManager) InitializeGlobalConfig(confFile string) {
 
 	cm.Initialize(confFile, config.GlobalAppConfig)
-	log.Printf("Global Config is listed below: \n%+v", config.GlobalAppConfig)
-	log.Printf("Application Config is listed below: \n%+v", config.GlobalAppConfig.ApplicationConfig)
+	//log.Printf("Global Config is listed below: \n%+v", config.GlobalAppConfig)
+	//log.Printf("Application Config is listed below: \n%+v", config.GlobalAppConfig.ApplicationConfig)
 }
 
 func (cm *ConfigManager) Initialize(filePath string, conf interface{}) {
-	log.Println("Initializing Application Config")
+	//log.Println("Initializing Application Config")
 	file, err := ioutil.ReadFile(filePath)
 	if err != nil {
 		panic(fmt.Sprintf("Error loading App Config file %s \n %s", filePath, err))
@@ -35,7 +35,7 @@ func (cm *ConfigManager) Initialize(filePath string, conf interface{}) {
 	if err != nil {
 		panic(fmt.Sprintf("Incorrect Json in %s \n %s", filePath, err))
 	}
-	log.Println("Application Config Initialized")
+	//log.Println("Application Config Initialized")
 }
 
 // UpdateConfigFromEnv updates provided config from environment variables

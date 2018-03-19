@@ -27,6 +27,12 @@
 			"revisionTime": "2018-02-09T01:38:31Z"
 		},
 		{
+			"checksumSHA1": "VPWVP11OJbrTCwnykVUiKH/6D/g=",
+			"path": "github.com/common-nighthawk/go-figure",
+			"revision": "2d3c686981b48f9d6022181dc810381325b16b24",
+			"revisionTime": "2017-04-10T00:05:45Z"
+		},
+		{
 			"checksumSHA1": "3jTLJIoyiujgh3fKprQcrqgcEDo=",
 			"path": "github.com/go-playground/locales",
 			"revision": "e4cbcb5d0652150d40ad0646651076b6bd2be4f6",

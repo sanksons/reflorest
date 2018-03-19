@@ -2,6 +2,7 @@ package config
 
 import (
 	"encoding/json"
+	"fmt"
 
 	"github.com/sanksons/reflorest/src/common/monitor"
 	"github.com/sanksons/reflorest/src/common/ratelimiter"
@@ -30,6 +31,36 @@ func (this *AppConfig) String() string {
 		return "Could NOT Marshal APP config."
 	}
 	return string(str)
+}
+
+func (this *AppConfig) ShowConfig() string {
+
+	s := fmt.Sprintf(
+		"AppName      := %s\n"+
+			"AppVersion   := %s\n"+
+			"ServerPort   := %s\n"+
+			"Log File     := %s\n"+
+			"Performance  := %+v\n"+
+			"Dynamic      := %+v\n"+
+			"HTTP Config  := %+v\n"+
+			"Profiler     := %+v\n"+
+			"Resp Headers := %+v\n"+
+			"App Config   := %+v\n"+
+			"Monitor Conf := %+v\n",
+		this.AppName,
+		this.AppVersion,
+		this.ServerPort,
+		this.LogConfFile,
+		this.Performance,
+		this.DynamicConfig,
+		this.HTTPConfig,
+		this.Profiler,
+		this.ResponseHeaders,
+		this.ApplicationConfig,
+		this.MonitorConfig,
+	)
+
+	return s
 }
 
 // PerformanceConfigs contains Garbage Collector detials, which will determine when the GC will kick

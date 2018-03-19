@@ -269,6 +269,7 @@ func initiateReplacementMap() map[string]string {
 	//prepare log path
 	var logpath string
 	if runtime.GOOS == "windows" {
+		//hack for windows
 		logpath = "C:\\\\" + ApplicationName + "\\\\"
 	} else {
 		logpath = "/var/log/" + ApplicationName + "/"

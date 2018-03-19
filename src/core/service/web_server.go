@@ -4,8 +4,10 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"strings"
 
+	"github.com/common-nighthawk/go-figure"
 	"github.com/sanksons/reflorest/src/common/config"
 	"github.com/sanksons/reflorest/src/common/constants"
 	"github.com/sanksons/reflorest/src/common/logger"
@@ -52,13 +54,11 @@ func (ws Webserver) ServiceHandler(w http.ResponseWriter, req *http.Request) {
 }
 
 func (ws Webserver) Start() {
-	log.Println("Web server Initialization begin")
 
 	//BootStrap the Application
 	initMgr := new(InitManager)
 	initMgr.Execute()
 
-	log.Println("Web server Initialization done")
 	logger.Info(fmt.Sprintln("Web server Initialization done"))
 
 	//All requests will be passed to the service handler
@@ -86,8 +86,13 @@ func (ws Webserver) Start() {
 
 	logger.Info(fmt.Sprintln("Web server Starting......"))
 
+	ws.displayConfigOnCli()
+	ws.displayLogoOnCli()
+	fmt.Printf("\nWeb server Starting......on port %s\n", config.GlobalAppConfig.ServerPort)
+
 	serr := http.ListenAndServe(url, nil)
 	if serr != nil {
+		log.Printf("Could not start web server %s\n", serr.Error())
 		logger.Error(fmt.Sprintln("Could not start web server ", serr))
 	}
 	if serr == nil {
@@ -113,4 +118,16 @@ func (ws Webserver) wrapperHandler(w http.ResponseWriter, r *http.Request) {
 // swagger handler
 func (ws Webserver) swaggerHandler(w http.ResponseWriter, r *http.Request) {
 	http.FileServer(http.Dir(".")).ServeHTTP(w, r)
+}
+
+func (ws Webserver) displayLogoOnCli() {
+	file, _ := os.Open("conf/standard.flf")
+
+	myFigure := figure.NewFigureWithFont(config.GlobalAppConfig.AppName, file, false)
+	myFigure.Print()
+}
+
+func (ws Webserver) displayConfigOnCli() {
+	fmt.Printf("\n\nUsing Configuration: \n")
+	fmt.Printf("%s\n", config.GlobalAppConfig.ShowConfig())
 }

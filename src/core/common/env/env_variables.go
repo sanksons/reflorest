@@ -1,7 +1,6 @@
 package env
 
 import (
-	"log"
 	"os"
 	"strings"
 )
@@ -42,6 +41,6 @@ func GetOsEnviron() *OsEnviron {
 	envVariables := new(OsEnviron)
 	envVariables.initialise()
 
-	log.Printf("%+v\n", envVariables)
+	//log.Printf("%+v\n", envVariables)
 	return envVariables
 }
