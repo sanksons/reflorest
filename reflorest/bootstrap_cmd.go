@@ -6,12 +6,16 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"runtime"
 	"strings"
 )
 
 const bootstrapDataSource = "https://raw.githubusercontent.com/sanksons/reflorest/master/reflorest/_newApp"
 
 var ApplicationPath string
+var ApplicationName string
+
+var Rmap ReplacementMap
 
 func BuildBootstrapCommand() *Command {
 
@@ -40,7 +44,14 @@ func generateBootstrap(args []string) error {
 		return fmt.Errorf("You need to supply application path.")
 	}
 	ApplicationPath = args[0]
+	ApplicationName = prepareApplicationName(ApplicationPath)
+
 	return createDirStructure()
+}
+
+func prepareApplicationName(path string) string {
+	pathArr := strings.Split(path, string(os.PathSeparator))
+	return pathArr[len(pathArr)-1]
 }
 
 type Path string
@@ -234,13 +245,47 @@ func (this *File) Create() error {
 		return this.error(err)
 	}
 	//{{APP_PATH}}
-	data = []byte(strings.Replace(string(data), "{{APP_PATH}}", ApplicationPath, -1))
+	for k, v := range Rmap {
+		data = []byte(strings.Replace(string(data), k, v, -1))
+	}
 	_, err = destFile.Write(data)
 	if err != nil {
 		return this.error(err)
 	}
 	destFile.Sync()
 	return nil
+}
+
+type ReplacementMap map[string]string
+
+func (this ReplacementMap) initiate() {
+	m := make(map[string]string)
+	m["{{APP_PATH}}"] = ApplicationPath
+	m["{{APP_NAME}}"] = ApplicationName
+
+	//prepare log path
+	var logpath string
+	if runtime.GOOS == "windows" {
+		logpath = "C:\\" + ApplicationName + "\\"
+	} else {
+		logpath = "/var/log/" + ApplicationName + "/"
+	}
+
+	m["{{LOG_PATH}}"] = logpath
+
+	os.MkdirAll(logpath, 0777)
+	this = m
+}
+
+func (this ReplacementMap) getValue(key string) (string, error) {
+	if this == nil {
+		this.initiate()
+	}
+
+	if v, ok := this[key]; ok {
+		return v, nil
+	}
+	return "", fmt.Errorf("Key Not Found:%s", key)
 }
 
 func createDirStructure() error {
@@ -250,7 +295,6 @@ func createDirStructure() error {
 		Name:       "root",
 		ActualName: "root",
 		Files: []File{
-			File{Name: "makefile", ActualName: "Makefile"},
 			File{Name: "main", ActualName: "main", Extension: "go"},
 		},
 		Folders: []Folder{
