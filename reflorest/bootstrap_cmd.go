@@ -297,6 +297,7 @@ func createDirStructure() error {
 				Files: []File{
 					File{Name: "conf", ActualName: "conf", Extension: "json"},
 					File{Name: "logger", ActualName: "logger", Extension: "json"},
+					File{Name: "standard", ActualName: "standard", Extension: "flf"},
 				},
 			},
 			Folder{
