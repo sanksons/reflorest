@@ -15,7 +15,7 @@ const bootstrapDataSource = "https://raw.githubusercontent.com/sanksons/reflores
 var ApplicationPath string
 var ApplicationName string
 
-var Rmap ReplacementMap
+var Rmap map[string]string
 
 func BuildBootstrapCommand() *Command {
 
@@ -46,11 +46,13 @@ func generateBootstrap(args []string) error {
 	ApplicationPath = args[0]
 	ApplicationName = prepareApplicationName(ApplicationPath)
 
+	Rmap = initiateReplacementMap()
 	return createDirStructure()
 }
 
 func prepareApplicationName(path string) string {
-	pathArr := strings.Split(path, string(os.PathSeparator))
+	pathArr := strings.Split(path, string("/"))
+	fmt.Printf("Path:%s\n", path)
 	return pathArr[len(pathArr)-1]
 }
 
@@ -246,6 +248,7 @@ func (this *File) Create() error {
 	}
 	//{{APP_PATH}}
 	for k, v := range Rmap {
+		//	fmt.Println(k)
 		data = []byte(strings.Replace(string(data), k, v, -1))
 	}
 	_, err = destFile.Write(data)
@@ -256,36 +259,25 @@ func (this *File) Create() error {
 	return nil
 }
 
-type ReplacementMap map[string]string
+func initiateReplacementMap() map[string]string {
 
-func (this ReplacementMap) initiate() {
-	m := make(map[string]string)
-	m["{{APP_PATH}}"] = ApplicationPath
-	m["{{APP_NAME}}"] = ApplicationName
+	s := make(map[string]string)
+
+	s["{{APP_PATH}}"] = ApplicationPath
+	s["{{APP_NAME}}"] = ApplicationName
 
 	//prepare log path
 	var logpath string
 	if runtime.GOOS == "windows" {
-		logpath = "C:\\" + ApplicationName + "\\"
+		logpath = "C:\\\\" + ApplicationName + "\\\\"
 	} else {
 		logpath = "/var/log/" + ApplicationName + "/"
 	}
 
-	m["{{LOG_PATH}}"] = logpath
+	s["{{LOG_PATH}}"] = logpath
 
 	os.MkdirAll(logpath, 0777)
-	this = m
-}
-
-func (this ReplacementMap) getValue(key string) (string, error) {
-	if this == nil {
-		this.initiate()
-	}
-
-	if v, ok := this[key]; ok {
-		return v, nil
-	}
-	return "", fmt.Errorf("Key Not Found:%s", key)
+	return s
 }
 
 func createDirStructure() error {
