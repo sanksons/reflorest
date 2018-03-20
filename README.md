@@ -1,4 +1,5 @@
 # Reflorest
+[![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat-square)](https://raw.githubusercontent.com/sanksons/reflorest/master/LICENSE)
 
 Reflorest is a reincarnation of a REST API Framework `florest`. To know more about florest 
 [Click Here](https://github.com/jabong/florest-core)
@@ -51,10 +52,10 @@ $ govendor fetch +o
 ```
 > This will install all the required dependencies.
 
-**7.** Modify the configuration files:
+**7.** No need to modify any configuration file. Just for Info, files are kept at:
 ```
-- config/logger/logger.json
-- config/newapp/config.json
+- conf/logger.json
+- conf/config.json
 ```
 
 **8.** Now just execute:
