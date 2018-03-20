@@ -1,5 +1,9 @@
 # Reflorest
 [![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat-square)](https://raw.githubusercontent.com/sanksons/reflorest/master/LICENSE)
+[![Build](https://api.travis-ci.org/sanksons/reflorest.svg?branch=master)](https://travis-ci.org/sanksons/reflorest)
+
+
+
 
 Reflorest is a reincarnation of a REST API Framework `florest`. To know more about florest 
 [Click Here](https://github.com/jabong/florest-core)

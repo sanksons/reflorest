@@ -4,8 +4,9 @@ import (
 	gk "github.com/onsi/ginkgo"
 	gm "github.com/onsi/gomega"
 
-	testUtil "test/utils"
 	"testing"
+
+	testUtil "github.com/sanksons/reflorest/test/utils"
 )
 
 func TestSearch(t *testing.T) {

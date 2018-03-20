@@ -3,7 +3,7 @@ package servicetest
 import (
 	gk "github.com/onsi/ginkgo"
 	gm "github.com/onsi/gomega"
-	testUtil "test/utils"
+	testUtil "github.com/sanksons/reflorest/test/utils"
 )
 
 func getHealthCheckTest() {
