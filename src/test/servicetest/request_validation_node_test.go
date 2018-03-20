@@ -3,11 +3,12 @@ package servicetest
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/sanksons/reflorest/src/test/api"
+	"io/ioutil"
+
 	gk "github.com/onsi/ginkgo"
 	gm "github.com/onsi/gomega"
-	"io/ioutil"
-	testUtil "test/utils"
+	"github.com/sanksons/reflorest/src/test/api"
+	testUtil "github.com/sanksons/reflorest/test/utils"
 )
 
 func testRequestValidation() {

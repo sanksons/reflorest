@@ -1,12 +1,13 @@
 package servicetest
 
 import (
-	"github.com/sanksons/reflorest/src/core/service"
-	gk "github.com/onsi/ginkgo"
-	gm "github.com/onsi/gomega"
 	"net/http"
 	"net/http/httptest"
-	testUtil "test/utils"
+
+	gk "github.com/onsi/ginkgo"
+	gm "github.com/onsi/gomega"
+	"github.com/sanksons/reflorest/src/core/service"
+	testUtil "github.com/sanksons/reflorest/test/utils"
 )
 
 type testRateLimitWebserver struct {
