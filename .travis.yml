@@ -2,10 +2,10 @@ language: go
 
 go:
   - 1.8.x
-  - 1.x
 
 before_install:
-  - go get -t -v ./...
+  - go get -u github.com/kardianos/govendor
+  - govendor sync
 
 script:
   - go test github.com/sanksons/reflorest/src/common/collections/maps/concurrentmap/concurrenthashmap
