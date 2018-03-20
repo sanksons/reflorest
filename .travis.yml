@@ -1,0 +1,11 @@
+language: go
+
+go:
+  - 1.8.x
+  - 1.x
+
+before_install:
+  - go get -t -v ./...
+
+script:
+  - go test github.com/sanksons/reflorest/src/common/collections/maps/concurrentmap/concurrenthashmap

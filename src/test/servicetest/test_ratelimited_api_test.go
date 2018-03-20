@@ -7,7 +7,7 @@ import (
 	gk "github.com/onsi/ginkgo"
 	gm "github.com/onsi/gomega"
 	"github.com/sanksons/reflorest/src/core/service"
-	testUtil "github.com/sanksons/reflorest/test/utils"
+	testUtil "github.com/sanksons/reflorest/src/test/utils"
 )
 
 type testRateLimitWebserver struct {
