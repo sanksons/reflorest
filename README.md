@@ -1,6 +1,7 @@
 # Reflorest
 [![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat-square)](https://raw.githubusercontent.com/sanksons/reflorest/master/LICENSE)
 [![Build](https://api.travis-ci.org/sanksons/reflorest.svg?branch=master)](https://travis-ci.org/sanksons/reflorest)
+[![Go Report Card](https://goreportcard.com/badge/github.com/sanksons/reflorest)](https://goreportcard.com/report/github.com/sanksons/reflorest)
 
 
 
