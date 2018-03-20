@@ -1,9 +1,9 @@
 package servicetest
 
 import (
-	"github.com/sanksons/reflorest/src/components/sqldb"
 	gk "github.com/onsi/ginkgo"
 	gm "github.com/onsi/gomega"
+	"github.com/sanksons/reflorest/src/components/sqldb"
 )
 
 func sqldbTest() {

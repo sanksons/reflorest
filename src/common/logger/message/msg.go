@@ -1,7 +1,5 @@
 package message
 
-import ()
-
 /*
 LogMsg struct is used for bundling message/requestcontext attributes
 for dumping into log

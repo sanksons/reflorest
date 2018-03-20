@@ -1,7 +1,5 @@
 package monitor
 
-import ()
-
 const (
 	DatadogAgent string = "DatadogAgent"
 )

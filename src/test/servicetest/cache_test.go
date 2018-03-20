@@ -1,9 +1,9 @@
 package servicetest
 
 import (
-	"github.com/sanksons/reflorest/src/components/cache"
 	gk "github.com/onsi/ginkgo"
 	gm "github.com/onsi/gomega"
+	"github.com/sanksons/reflorest/src/components/cache"
 )
 
 func cacheTest() {

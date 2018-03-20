@@ -1,7 +1,5 @@
 package ratelimiter
 
-import ()
-
 type RateLimiter interface {
 	// Initialize the rate limiter
 	Init(*Config) *Error

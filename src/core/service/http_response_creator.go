@@ -47,7 +47,7 @@ func (n *HTTPResponseCreator) Execute(data workflow.WorkFlowData) (workflow.Work
 				appError = v
 			}
 		} else {
-			appError.Errors = []constants.AppError{constants.AppError{Code: constants.InvalidErrorCode,
+			appError.Errors = []constants.AppError{{Code: constants.InvalidErrorCode,
 				Message: "Invalid App error"}}
 		}
 	}

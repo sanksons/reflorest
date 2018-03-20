@@ -22,14 +22,14 @@ func (d dummyTestDatadogClient) Histogram(name string, value float64, tags []str
 
 func TestCmdConfigure(t *testing.T) {
 	tD := map[string]HCommandConf{
-		"test1": HCommandConf{
+		"test1": {
 			Timeout:                100,
 			MaxConcurrentRequests:  10,
 			RequestVolumeThreshold: 5,
 			SleepWindow:            40,
 			ErrorPercentThreshold:  50,
 		},
-		"test2": HCommandConf{
+		"test2": {
 			Timeout:                200,
 			MaxConcurrentRequests:  20,
 			RequestVolumeThreshold: 25,

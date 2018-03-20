@@ -1,7 +1,5 @@
 package monitor
 
-import ()
-
 // MData is the logging/monitoring data that application has to sent
 
 type MData struct {

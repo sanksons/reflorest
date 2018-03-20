@@ -1,10 +1,10 @@
 package servicetest
 
 import (
-	"github.com/sanksons/reflorest/src/common/logger"
-	"github.com/sanksons/reflorest/src/common/logger/impls"
 	gk "github.com/onsi/ginkgo"
 	gm "github.com/onsi/gomega"
+	"github.com/sanksons/reflorest/src/common/logger"
+	"github.com/sanksons/reflorest/src/common/logger/impls"
 )
 
 func loggerTest() {

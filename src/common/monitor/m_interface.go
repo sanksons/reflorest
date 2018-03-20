@@ -1,7 +1,5 @@
 package monitor
 
-import ()
-
 type MInterface interface {
 
 	// Init initialised Monitor Client with the supplied config

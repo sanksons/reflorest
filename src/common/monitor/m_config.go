@@ -1,7 +1,5 @@
 package monitor
 
-import ()
-
 type MConf struct {
 
 	//APPName acts as a namespace which is prefixed with every custom metric

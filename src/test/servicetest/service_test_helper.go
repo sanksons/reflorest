@@ -2,9 +2,9 @@ package servicetest
 
 import (
 	"encoding/json"
+	gm "github.com/onsi/gomega"
 	"github.com/sanksons/reflorest/src/common/constants"
 	utilhttp "github.com/sanksons/reflorest/src/common/utils/http"
-	gm "github.com/onsi/gomega"
 )
 
 func validateHealthCheckResponse(responseBody string) {

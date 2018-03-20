@@ -1,7 +1,5 @@
 package ratelimiter
 
-import ()
-
 type Config struct {
 	// The rate limiting algorithm
 	// Default is GCRA
