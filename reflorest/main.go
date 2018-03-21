@@ -39,6 +39,7 @@ func init() {
 	DefaultCommand = BuildHelpCommand()
 	Commands = append(Commands, BuildBootstrapCommand())
 	Commands = append(Commands, BuildDeployCommand())
+	Commands = append(Commands, BuildRunCommand())
 	Commands = append(Commands, BuildHelpCommand())
 }
 
