@@ -22,7 +22,7 @@ func BuildDeployCommand() *Command {
 			err := deploy()
 			if err != nil {
 				fmt.Printf(redColor+"\nError Occured : %s\n"+defaultStyle, err.Error())
-				//panic(err.Error())
+				os.Exit(1)
 			}
 		},
 	}
