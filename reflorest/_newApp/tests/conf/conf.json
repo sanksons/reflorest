@@ -2,7 +2,7 @@
    "AppName":"reflorest-testapp",
    "AppVersion":"1.0.0",
    "ServerPort":"8080",
-   "LogConfFile":"conf/logger.json",
+   "LogConfFile":"../conf/logger.json",
    "MonitorConfig":{  
       "AppName":"reflorest-testapp",
       "Platform":"DatadogAgent",

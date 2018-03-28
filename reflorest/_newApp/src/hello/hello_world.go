@@ -1,9 +1,7 @@
 package hello
 
 import (
-	errors "{{APP_PATH}}/src/common/appconstant"
-
-	florest_constants "github.com/sanksons/reflorest/src/common/constants"
+	reflorest_constants "github.com/sanksons/reflorest/src/common/constants"
 	workflow "github.com/sanksons/reflorest/src/core/common/orchestrator"
 )
 
@@ -23,7 +21,16 @@ func (a HelloWorld) Name() string {
 	return "HelloWorld"
 }
 
+func (a HelloWorld) getData() string {
+	return "Success Response"
+}
+
 func (a HelloWorld) Execute(io workflow.WorkFlowData) (workflow.WorkFlowData, error) {
 	//Business Logic
-	return io, &florest_constants.AppError{Code: errors.FunctionalityNotImplementedErrorCode, Message: "invalid request"}
+	io.IOData.Set(reflorest_constants.Result, a.getData())
+	return io, nil
+	// return io, &reflorest_constants.AppError{
+	// 	Code:    errors.FunctionalityNotImplementedErrorCode,
+	// 	Message: "Sample Error",
+	// }
 }

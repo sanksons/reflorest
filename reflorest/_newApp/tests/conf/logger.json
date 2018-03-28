@@ -3,7 +3,7 @@
     "LogLevel": 2,
     "DefaultLogType": "fileLoggerDefault",
     "AppName" : "reflorest-testapp-",
-    "Write2Console" : true,
+    "Write2Console" : false,
     "FileLogger": [
         {
             "Key": "fileLoggerDefault",
