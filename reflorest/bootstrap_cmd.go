@@ -289,6 +289,8 @@ func createDirStructure() error {
 		ActualName: "root",
 		Files: []File{
 			File{Name: "main", ActualName: "main", Extension: "go"},
+			File{Name: "dockerfile", ActualName: "Dockerfile"},
+			File{Name: "jenkinsfile", ActualName: "Jenkinsfile"},
 		},
 		Folders: []Folder{
 			Folder{
@@ -311,6 +313,9 @@ func createDirStructure() error {
 							Folder{Name: "appconfig", ActualName: "appconfig", Files: []File{File{Name: "config", ActualName: "application_config", Extension: "go"}}},
 							Folder{Name: "appconstant", ActualName: "appconstant", Files: []File{File{Name: "errcodes", ActualName: "error_codes", Extension: "go"}}},
 						},
+						Files: []File{
+							File{Name: "starter", ActualName: "starter", Extension: "go"},
+						},
 					},
 					Folder{
 						Name:       "hello",
@@ -323,7 +328,28 @@ func createDirStructure() error {
 							File{Name: "swagger", ActualName: "swagger", Extension: "go"},
 						},
 					},
-					Folder{Name: "test", ActualName: "test"},
+				},
+			},
+			Folder{
+				Name:       "tests",
+				ActualName: "tests",
+				Folders: []Folder{
+					Folder{
+						Name:       "conf",
+						ActualName: "conf",
+						Files: []File{
+							File{Name: "conf", ActualName: "conf", Extension: "json"},
+							File{Name: "logger", ActualName: "logger", Extension: "json"},
+						},
+					},
+					Folder{
+						Name:       "hello",
+						ActualName: "hello",
+						Files: []File{
+							File{Name: "hello_suite_test", ActualName: "hello_suite_test", Extension: "go"},
+							File{Name: "hello_test", ActualName: "hello_test", Extension: "go"},
+						},
+					},
 				},
 			},
 		},
