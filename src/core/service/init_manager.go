@@ -70,7 +70,7 @@ func (im InitManager) Execute() {
 //initConfig initialises the Global Application Config
 func initConfig() {
 	cm := new(ConfigManager)
-	cm.InitializeGlobalConfig(DefaultConfFile)
+	cm.InitializeGlobalConfig(cm.GetConfFile())
 	cm.UpdateConfigFromEnv(config.GlobalAppConfig, "global")
 }
 

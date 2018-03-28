@@ -14,8 +14,19 @@ import (
 )
 
 const DefaultConfFile = "conf/conf.json"
+const TestConfFile = "../conf/conf.json"
 
 type ConfigManager struct {
+	ConfFile string
+}
+
+func (cm *ConfigManager) GetConfFile() string {
+	fmt.Println("APP mode is " + AppMode)
+	if AppMode == MODE_PROD {
+		return DefaultConfFile
+	}
+	return TestConfFile
+
 }
 
 func (cm *ConfigManager) InitializeGlobalConfig(confFile string) {
