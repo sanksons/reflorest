@@ -7,7 +7,7 @@
     "FileLogger": [
         {
             "Key": "fileLoggerDefault",
-            "Path": "C:\\reflorest-testapp\\",
+            "Path": "{{LOG_PATH}}",
             "FormatType" : "json",
             "FileNamePrefix": "api-"       
         }       
