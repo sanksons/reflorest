@@ -15,6 +15,7 @@ func StartServer() {
 	fmt.Println("APPLICATION BEGIN")
 	webserver := new(service.Webserver)
 	Register()
+	webserver.PreStart(func(){}, func(){})
 	webserver.Start()
 }
 
@@ -29,7 +30,7 @@ func registerAllApis() {
 }
 
 func registerConfig() {
-	service.RegisterConfig(new(appconfig.AppConfig))
+	service.RegisterConfig(new(appconfig.ApplicationConfig))
 }
 
 func registerErrors() {
