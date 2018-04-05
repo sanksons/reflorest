@@ -16,5 +16,9 @@
       "GCPercentage":1000
    },
    "ApplicationConfig":{
+     "TestConfig":{
+       "Alpha" : 1,
+       "Beta"  : 2
+     }
   }
 }

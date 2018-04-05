@@ -3,9 +3,9 @@ package common
 import (
 	"fmt"
 
-	"github.com/sanksons/reflorest-testapp/src/common/appconfig"
-	"github.com/sanksons/reflorest-testapp/src/common/appconstant"
-	"github.com/sanksons/reflorest-testapp/src/hello"
+	"{{APP_PATH}}/src/common/appconfig"
+	"{{APP_PATH}}/src/common/appconstant"
+	"{{APP_PATH}}/src/hello"
 	"github.com/sanksons/reflorest/src/core/service"
 )
 

@@ -2,7 +2,7 @@
     "ProfilerEnabled": true,
     "LogLevel": 2,
     "DefaultLogType": "fileLoggerDefault",
-    "AppName" : "reflorest-testapp-",
+    "AppName" : "{{APP_NAME}}-",
     "Write2Console" : false,
     "FileLogger": [
         {

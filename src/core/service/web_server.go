@@ -53,13 +53,16 @@ func (ws Webserver) ServiceHandler(w http.ResponseWriter, req *http.Request) {
 	w.Write([]byte("Error"))
 }
 
-func (ws Webserver) Start() {
-
+func (ws Webserver) PreStart(a func(), b func()) {
 	//BootStrap the Application
+	a()
 	initMgr := new(InitManager)
 	initMgr.Execute()
-
 	logger.Info(fmt.Sprintln("Web server Initialization done"))
+	b()
+}
+
+func (ws Webserver) Start() {
 
 	//All requests will be passed to the service handler
 	var httpHandlerFunc = utilhttp.MakeGzipHandler(ws.wrapperHandler)

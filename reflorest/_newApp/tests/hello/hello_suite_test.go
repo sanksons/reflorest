@@ -7,7 +7,7 @@ import (
 	gk "github.com/onsi/ginkgo"
 	gm "github.com/onsi/gomega"
 
-	service "github.com/sanksons/reflorest-testapp/src/common"
+	service "{{APP_PATH}}/src/common"
 	reflorestservice "github.com/sanksons/reflorest/src/core/service"
 	webserver "github.com/sanksons/reflorest/src/testtools/fakers/webserver"
 )
