@@ -74,11 +74,13 @@ func (cm *ConfigManager) UpdateConfigFromEnv(conf interface{}, ty string) {
 		updatedVal, envValfound := env.GetOsEnviron().Get(v)
 
 		if !envValfound {
-			panic(fmt.Errorf("Environment variable %s not found", v))
+			fmt.Printf("\n>> Environment variable %s not found\n", v)
+			continue
 		}
 
 		if strings.Trim(updatedVal, " ") == "" {
-			panic(fmt.Errorf("Environment variable %s is empty", v))
+			fmt.Printf("\n>> Environment variable %s is empty\n", v)
+			continue
 		}
 
 		configEnvUpdateValuesMap[k] = updatedVal
@@ -95,7 +97,7 @@ func (cm *ConfigManager) UpdateConfigFromEnv(conf interface{}, ty string) {
 		panic(uerr)
 	}
 	if ty == "global" {
-		log.Printf("Updated config from environment variables: %+v\n", config.GlobalAppConfig)
+		//log.Printf("Updated config from environment variables: %+v\n", config.GlobalAppConfig)
 	}
 }
 

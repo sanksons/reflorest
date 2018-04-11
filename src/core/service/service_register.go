@@ -1,8 +1,6 @@
 package service
 
 import (
-	"log"
-
 	"github.com/sanksons/reflorest/src/common/config"
 	"github.com/sanksons/reflorest/src/common/constants"
 )
@@ -41,6 +39,6 @@ func RegisterConfigEnvUpdateMap(a map[string]string) {
 }
 
 func RegisterGlobalEnvUpdateMap(a map[string]string) {
-	log.Println("RegisterGlobalEnvUpdateMap CALLED")
+	//log.Println("RegisterGlobalEnvUpdateMap CALLED")
 	globalEnvUpdateMap = a
 }
