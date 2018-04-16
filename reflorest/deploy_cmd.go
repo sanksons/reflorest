@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"flag"
 	"fmt"
 	"io"
@@ -44,7 +45,15 @@ func deploy() error {
 }
 
 func GoInstall() error {
-	return exec.Command("go", "install", "./...").Run()
+	cmd := exec.Command("go", "install", "./...")
+	var stderr bytes.Buffer
+	cmd.Stderr = &stderr
+	err := cmd.Run()
+	if err != nil {
+		fmt.Println(fmt.Sprint(err) + ": " + stderr.String())
+		return err
+	}
+	return nil
 }
 
 func SetConfigFiles() error {
@@ -73,7 +82,8 @@ func SetConfigFiles() error {
 			return fmt.Errorf(err.Error())
 		}
 	}
-	err = os.MkdirAll(path2conf, 0666)
+	fmt.Println(path2conf)
+	err = os.MkdirAll(path2conf, 0755)
 	if err != nil {
 		return err
 	}
