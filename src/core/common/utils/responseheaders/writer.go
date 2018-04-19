@@ -2,11 +2,12 @@ package responseheaders
 
 import (
 	"fmt"
+	"strings"
+
 	"github.com/sanksons/reflorest/src/common/config"
 	"github.com/sanksons/reflorest/src/common/constants"
 	utilhttp "github.com/sanksons/reflorest/src/common/utils/http"
 	workflow "github.com/sanksons/reflorest/src/core/common/orchestrator"
-	"strings"
 )
 
 const (
@@ -40,7 +41,15 @@ func (r *Writer) Name() string {
 
 func (r *Writer) Execute(io workflow.WorkFlowData) (workflow.WorkFlowData, error) {
 	rh, _ := io.IOData.Get(constants.ResponseHeadersConfig)
-	res := utilhttp.NewAPIResponse()
+	rdata, err1 := io.IOData.Get(constants.APIResponse)
+
+	var res utilhttp.APIResponse
+	if err1 == nil {
+		res = rdata.(utilhttp.APIResponse)
+	} else {
+		res = utilhttp.NewAPIResponse()
+	}
+
 	if rh != nil {
 		if resHeaderConf, ok := rh.(config.ResponseHeaderFields); ok {
 			cHeaders := resHeaderConf.CacheControl
