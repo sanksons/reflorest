@@ -29,7 +29,7 @@ more user friendly.
 ### Intallation Instructions:
 
 **1.** Install the Reflorest CLI, using command:
-```
+```bash
 $ go get -u github.com/sanksons/reflorest/reflorest
 ```
 **2.** Install Govendor (dependency manager), using command
