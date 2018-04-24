@@ -8,13 +8,24 @@ import (
 )
 
 type TestWebserver struct {
+	Ws *service.Webserver
 }
 
-func (ws *TestWebserver) Response(req *http.Request) *httptest.ResponseRecorder {
+func Initialize(a func()) *TestWebserver {
+	webServer := new(service.Webserver)
+	service.SetAppMode(service.MODE_TEST)
+	//service.Register()
+	webServer.PreStart(a, func() {})
+	ts := new(TestWebserver)
+	ts.Ws = webServer
+	return ts
+}
+
+func (this *TestWebserver) Response(req *http.Request) *httptest.ResponseRecorder {
 
 	w := httptest.NewRecorder()
-	webServer := new(service.Webserver)
-	webServer.ServiceHandler(w, req)
+
+	this.Ws.ServiceHandler(w, req)
 
 	return w
 }
