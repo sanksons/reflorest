@@ -7,7 +7,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/common-nighthawk/go-figure"
+	figure "github.com/common-nighthawk/go-figure"
 	"github.com/sanksons/reflorest/src/common/config"
 	"github.com/sanksons/reflorest/src/common/constants"
 	"github.com/sanksons/reflorest/src/common/logger"
@@ -107,10 +107,18 @@ func (ws Webserver) Start() {
 
 // wrapper handler
 func (ws Webserver) wrapperHandler(w http.ResponseWriter, r *http.Request) {
+	origin := r.Header.Get("Origin")
 	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT, PATCH, OPTIONS")
 	w.Header().Set("Access-Control-Allow-Headers", swaggerAllowedHeaders)
+	w.Header().Set("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT, PATCH, OPTIONS")
+	if origin != "" {
+		w.Header().Set("Access-Control-Allow-Origin", origin)
+		w.Header().Set("Access-Control-Allow-Credentials", "true")
+		w.Header().Set("Vary", "Origin")
+	}
+
 	w.Header().Set("content-type", "application/json")
+
 	if strings.HasPrefix(r.URL.Path, "/swagger") {
 		ws.swaggerHandler(w, r)
 	} else {
